@@ -1,10 +1,11 @@
 import { Box, Typography } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 
 const Mainpage = () => {
   const [titles, setTitles] = useState([]);
-  console.log(titles);
+  const navigate = useNavigate();
   useEffect(() => {
     getTitles();
   }, []);
@@ -15,10 +16,23 @@ const Mainpage = () => {
   };
 
   return (
-    <Box sx={{ backgroundColor: "#f7f7f9" }}>
+    <Box sx={{ backgroundColor: "#f7f7f7", p: 2 }}>
       {titles?.map((ele, index) => (
         <Box key={index}>
-          <Typography p={1} onClick={() => {}}>
+          <Typography
+            sx={{
+              backgroundColor: "white",
+              width: "75%",
+              ml: "12.5%",
+              borderRadius: "15px",
+              "&:hover": {
+                backgroundColor: "lightgray",
+              },
+            }}
+            p={2}
+            my={1}
+            onClick={() => navigate("/Single", { state: ele })}
+          >
             {ele.title}
           </Typography>
         </Box>

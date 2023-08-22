@@ -1,12 +1,18 @@
 import React, { Children } from "react";
 import NavbarComponent from "../../molecules/navbar";
-import { Routes } from "react-router";
+import { Route, Routes } from "react-router";
 
-const LayoutComponent = ({ Children }) => {
+import Mainpage from "../../pages/mainPage";
+import SinglePage from "../../pages/singlePage";
+
+const LayoutComponent = () => {
   return (
     <div>
       <NavbarComponent />
-      <Routes>{Children}</Routes>
+      <Routes>
+        <Route path="/" element={<Mainpage />} />
+        <Route path="/Single" element={<SinglePage />} />
+      </Routes>
     </div>
   );
 };
